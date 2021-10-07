@@ -1,3 +1,5 @@
+import { CloseIcon } from '@chakra-ui/icons';
+import { Flex, Spacer } from '@chakra-ui/react';
 import React, { Dispatch, SetStateAction } from 'react';
 
 type TodoType = {
@@ -18,15 +20,11 @@ const Todo = ({ index, title, todos, setTodos }: Props) => {
   };
 
   return (
-    <>
+    <Flex align="center" w="90%" m="0 auto">
       <p>{title}</p>
-      <button
-        onClick={() => removeTodo()}
-        style={{ border: '1px solid gray', padding: '0.2rem', borderRadius: '5px' }}
-      >
-        削除する
-      </button>
-    </>
+      <Spacer />
+      <CloseIcon onClick={() => removeTodo()} w={3} h={3} _hover={{ cursor: 'pointer' }} />
+    </Flex>
   );
 };
 
