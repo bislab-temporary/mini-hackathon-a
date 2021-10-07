@@ -22,7 +22,7 @@ const App = () => {
       <Input
         variant="filled"
         my={3}
-        placeholder="Todoを追加"
+        placeholder="Todoをついか"
         type="text"
         onChange={(event: ChangeEvent<HTMLInputElement>) => setTitle(event.target.value)}
         onKeyPress={(e) => {
