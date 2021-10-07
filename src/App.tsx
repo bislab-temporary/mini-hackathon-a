@@ -1,3 +1,4 @@
+import { Container, Stack, StackDivider, Input } from '@chakra-ui/react';
 import React, { useState, ChangeEvent } from 'react';
 
 import Todo from './conponents/Todo';
@@ -17,8 +18,11 @@ const App = () => {
   const [todos, setTodos] = useState<TodoType[]>(initialTodos);
 
   return (
-    <>
-      <input
+    <Container>
+      <Input
+        variant="filled"
+        my={3}
+        placeholder="Todoをついか"
         type="text"
         onChange={(event: ChangeEvent<HTMLInputElement>) => setTitle(event.target.value)}
         onKeyPress={(e) => {
@@ -28,10 +32,12 @@ const App = () => {
           }
         }}
       />
-      {todos.map((todo, i) => (
-        <Todo key={todo.title} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
-      ))}
-    </>
+      <Stack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
+        {todos.map((todo, i) => (
+          <Todo key={todo.title} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
+        ))}
+      </Stack>
+    </Container>
   );
 };
 
