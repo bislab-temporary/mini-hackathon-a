@@ -28,8 +28,8 @@ const App = () => {
           }
         }}
       />
-      {todos.map((todo) => (
-        <Todo key={todo.title} title={todo.title} />
+      {todos.map((todo, i) => (
+        <Todo key={todo.title} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
       ))}
     </>
   );
