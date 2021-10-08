@@ -10,13 +10,23 @@ type Todo = {
 type Props = {
   todos: Todo[];
   setTodos: Dispatch<SetStateAction<Todo[]>>;
+  status: boolean[];
+  setStatus: Dispatch<SetStateAction<boolean[]>>;
 };
 
-const TodoList = ({ todos, setTodos }: Props) => {
+const TodoList = ({ todos, setTodos, status, setStatus }: Props) => {
   return (
     <Stack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
       {todos.map((todo, i) => (
-        <Todo key={todo.title} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
+        <Todo
+          key={todo.title}
+          index={i}
+          title={todo.title}
+          todos={todos}
+          setTodos={setTodos}
+          status={status}
+          setStatus={setStatus}
+        />
       ))}
     </Stack>
   );

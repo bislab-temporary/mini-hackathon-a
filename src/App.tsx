@@ -16,11 +16,12 @@ const initialTodos: TodoType[] = [
 
 const App = () => {
   const [todos, setTodos] = useState<TodoType[]>(initialTodos);
+  const [status, setStatus] = useState<boolean[]>([false, false, false]);
 
   return (
     <Container>
-      <TodoInput todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoInput todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
+      <TodoList todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
     </Container>
   );
 };

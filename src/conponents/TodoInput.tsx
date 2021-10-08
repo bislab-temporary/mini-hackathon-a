@@ -8,9 +8,11 @@ type Todo = {
 type Props = {
   todos: Todo[];
   setTodos: Dispatch<SetStateAction<Todo[]>>;
+  status: boolean[];
+  setStatus: Dispatch<SetStateAction<boolean[]>>;
 };
 
-const TodoInput = ({ todos, setTodos }: Props) => {
+const TodoInput = ({ todos, setTodos, status, setStatus }: Props) => {
   const [title, setTitle] = useState<string>('');
 
   return (
@@ -23,7 +25,9 @@ const TodoInput = ({ todos, setTodos }: Props) => {
       onKeyPress={(e) => {
         if (e.key === 'Enter') {
           const newTodos = [...todos, { title: title }];
+          const newStatus = [...status, false];
           setTodos(newTodos);
+          setStatus(newStatus);
         }
       }}
     />
