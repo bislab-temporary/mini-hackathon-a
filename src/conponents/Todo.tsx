@@ -1,5 +1,5 @@
 import { CloseIcon } from '@chakra-ui/icons';
-import { Flex, Spacer, Editable, EditablePreview, EditableInput } from '@chakra-ui/react';
+import { Flex, Spacer, Editable, EditablePreview, EditableInput, Checkbox } from '@chakra-ui/react';
 import React, { Dispatch, SetStateAction } from 'react';
 
 type TodoType = {
@@ -21,6 +21,7 @@ const Todo = ({ index, title, todos, setTodos }: Props) => {
 
   return (
     <Flex align="center" w="90%" m="0 auto">
+      <Checkbox align="center" w="5%" m="0 auto" />
       <Editable defaultValue={title}>
         <EditablePreview />
         <EditableInput />
