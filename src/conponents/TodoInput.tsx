@@ -1,5 +1,5 @@
 import { Input } from '@chakra-ui/react';
-import React, { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
+import React, { useState, ChangeEvent, Dispatch, SetStateAction, KeyboardEvent } from 'react';
 
 type Todo = {
   title: string;
@@ -21,8 +21,8 @@ const TodoInput = ({ todos, setTodos, status, setStatus }: Props) => {
       my={3}
       placeholder="Todoを追加"
       type="text"
-      onChange={(event: ChangeEvent<HTMLInputElement>) => setTitle(event.target.value)}
-      onKeyPress={(e) => {
+      onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+      onKeyPress={(e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
           const newTodos = [...todos, { title: title }];
           const newStatus = [...status, false];
