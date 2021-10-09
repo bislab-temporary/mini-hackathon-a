@@ -29,7 +29,7 @@ const Todo = ({ index, title, todos, setTodos, status, setStatus }: Props) => {
 
   return (
     <Flex align="center" w="90%" m="0 auto">
-      <Checkbox justifyContent="center" w="5%" onChange={() => handleStatus()} />
+      <Checkbox mr={2} onChange={() => handleStatus()} />
       <Editable defaultValue={title}>
         {status[index] ? <EditablePreview as="s" /> : <EditablePreview />}
         <EditableInput />
