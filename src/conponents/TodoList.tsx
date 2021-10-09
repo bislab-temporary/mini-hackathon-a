@@ -3,13 +3,13 @@ import React, { Dispatch, SetStateAction } from 'react';
 
 import Todo from './Todo';
 
-type Todo = {
+type TodoType = {
   title: string;
 };
 
 type Props = {
-  todos: Todo[];
-  setTodos: Dispatch<SetStateAction<Todo[]>>;
+  todos: TodoType[];
+  setTodos: Dispatch<SetStateAction<TodoType[]>>;
   status: boolean[];
   setStatus: Dispatch<SetStateAction<boolean[]>>;
 };

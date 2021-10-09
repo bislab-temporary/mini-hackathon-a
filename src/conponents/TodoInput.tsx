@@ -1,13 +1,13 @@
 import { Input } from '@chakra-ui/react';
 import React, { useState, ChangeEvent, Dispatch, SetStateAction, KeyboardEvent } from 'react';
 
-type Todo = {
+type TodoType = {
   title: string;
 };
 
 type Props = {
-  todos: Todo[];
-  setTodos: Dispatch<SetStateAction<Todo[]>>;
+  todos: TodoType[];
+  setTodos: Dispatch<SetStateAction<TodoType[]>>;
   status: boolean[];
   setStatus: Dispatch<SetStateAction<boolean[]>>;
 };
