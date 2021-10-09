@@ -1,5 +1,5 @@
 import { CloseIcon } from '@chakra-ui/icons';
-import { Flex, Spacer, Editable, EditablePreview, EditableInput } from '@chakra-ui/react';
+import { Flex, Spacer, Editable, EditablePreview, EditableInput, Checkbox } from '@chakra-ui/react';
 import React, { Dispatch, SetStateAction } from 'react';
 
 type TodoType = {
@@ -11,18 +11,27 @@ type Props = {
   title: string;
   todos: TodoType[];
   setTodos: Dispatch<SetStateAction<TodoType[]>>;
+  status: boolean[];
+  setStatus: Dispatch<SetStateAction<boolean[]>>;
 };
 
-const Todo = ({ index, title, todos, setTodos }: Props) => {
+const Todo = ({ index, title, todos, setTodos, status, setStatus }: Props) => {
   const removeTodo = () => {
     const newTodos = todos.filter((_, i) => i !== index);
     setTodos(newTodos);
   };
 
+  const handleStatus = () => {
+    const newStatus = [...status];
+    newStatus[index] = !newStatus[index];
+    setStatus(newStatus);
+  };
+
   return (
     <Flex align="center" w="90%" m="0 auto">
+      <Checkbox mr={2} onChange={() => handleStatus()} />
       <Editable defaultValue={title}>
-        <EditablePreview />
+        {status[index] ? <EditablePreview as="s" /> : <EditablePreview />}
         <EditableInput />
       </Editable>
       <Spacer />

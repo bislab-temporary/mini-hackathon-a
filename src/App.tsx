@@ -1,7 +1,8 @@
-import { Container, Stack, StackDivider, Input } from '@chakra-ui/react';
-import React, { useState, ChangeEvent } from 'react';
+import { Container } from '@chakra-ui/react';
+import React, { useState } from 'react';
 
-import Todo from './conponents/Todo';
+import TodoInput from './conponents/TodoInput';
+import TodoList from './conponents/TodoList';
 
 type TodoType = {
   title: string;
@@ -14,29 +15,13 @@ const initialTodos: TodoType[] = [
 ];
 
 const App = () => {
-  const [title, setTitle] = useState<string>('');
   const [todos, setTodos] = useState<TodoType[]>(initialTodos);
+  const [status, setStatus] = useState<boolean[]>([false, false, false]);
 
   return (
     <Container>
-      <Input
-        variant="filled"
-        my={3}
-        placeholder="Todoをついか"
-        type="text"
-        onChange={(event: ChangeEvent<HTMLInputElement>) => setTitle(event.target.value)}
-        onKeyPress={(e) => {
-          if (e.key === 'Enter') {
-            const newTodos = [...todos, { title: title }];
-            setTodos(newTodos);
-          }
-        }}
-      />
-      <Stack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-        {todos.map((todo, i) => (
-          <Todo key={todo.title} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
-        ))}
-      </Stack>
+      <TodoInput todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
+      <TodoList todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
     </Container>
   );
 };
