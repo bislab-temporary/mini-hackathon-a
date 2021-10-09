@@ -6,22 +6,22 @@ import TodoList from './conponents/TodoList';
 
 type TodoType = {
   title: string;
+  isCompleted: boolean;
 };
 
 const initialTodos: TodoType[] = [
-  { title: '資料を作る' },
-  { title: '歯医者に行く' },
-  { title: '課題をやる' },
+  { title: '資料を作る', isCompleted: false },
+  { title: '歯医者に行く', isCompleted: false },
+  { title: '課題をやる', isCompleted: false },
 ];
 
 const App = () => {
   const [todos, setTodos] = useState<TodoType[]>(initialTodos);
-  const [status, setStatus] = useState<boolean[]>([false, false, false]);
 
   return (
     <Container>
-      <TodoInput todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
-      <TodoList todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
+      <TodoInput todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </Container>
   );
 };

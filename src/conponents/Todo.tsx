@@ -1,9 +1,16 @@
 import { CloseIcon } from '@chakra-ui/icons';
-import { Flex, Spacer, Editable, EditablePreview, EditableInput, Checkbox } from '@chakra-ui/react';
+import {
+  Flex,
+  Spacer,
+  Editable,
+  EditablePreview,
+  EditableInput /*Checkbox*/,
+} from '@chakra-ui/react';
 import React, { Dispatch, SetStateAction } from 'react';
 
 type TodoType = {
   title: string;
+  isCompleted: boolean;
 };
 
 type Props = {
@@ -11,25 +18,23 @@ type Props = {
   title: string;
   todos: TodoType[];
   setTodos: Dispatch<SetStateAction<TodoType[]>>;
-  status: boolean[];
-  setStatus: Dispatch<SetStateAction<boolean[]>>;
 };
 
-const Todo = ({ index, title, todos, setTodos, status, setStatus }: Props) => {
+const Todo = ({ index, title, todos, setTodos }: Props) => {
   const removeTodo = () => {
     const newTodos = todos.filter((_, i) => i !== index);
     setTodos(newTodos);
   };
 
-  const handleStatus = () => {
-    const newStatus = [...status];
-    newStatus[index] = !newStatus[index];
-    setStatus(newStatus);
-  };
+  // const handleStatus = ({ index, title, todos, setTodos }: Props) => {
+  //   const newStatus = [...todos];
+  //   newStatus.isCompleted[index] = !newStatus[index];
+  //   setStatus(newStatus);
+  // };
 
   return (
     <Flex align="center" w="90%" m="0 auto">
-      <Checkbox mr={2} onChange={() => handleStatus()} />
+      {/* {<Checkbox mr={2} onChange={() => handleStatus()} />} */}
       <Editable defaultValue={title}>
         {status[index] ? <EditablePreview as="s" /> : <EditablePreview />}
         <EditableInput />

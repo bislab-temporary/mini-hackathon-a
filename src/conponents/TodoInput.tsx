@@ -3,16 +3,15 @@ import React, { useState, ChangeEvent, Dispatch, SetStateAction, KeyboardEvent }
 
 type TodoType = {
   title: string;
+  isCompleted: boolean;
 };
 
 type Props = {
   todos: TodoType[];
   setTodos: Dispatch<SetStateAction<TodoType[]>>;
-  status: boolean[];
-  setStatus: Dispatch<SetStateAction<boolean[]>>;
 };
 
-const TodoInput = ({ todos, setTodos, status, setStatus }: Props) => {
+const TodoInput = ({ todos, setTodos }: Props) => {
   const [title, setTitle] = useState<string>('');
 
   return (
@@ -24,10 +23,8 @@ const TodoInput = ({ todos, setTodos, status, setStatus }: Props) => {
       onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
       onKeyPress={(e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-          const newTodos = [...todos, { title: title }];
-          const newStatus = [...status, false];
+          const newTodos = [...todos, { title: title, isCompleted: false }];
           setTodos(newTodos);
-          setStatus(newStatus);
         }
       }}
     />
