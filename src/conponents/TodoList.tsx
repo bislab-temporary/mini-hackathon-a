@@ -3,10 +3,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 
 import Todo from './Todo';
 
-type TodoType = {
-  title: string;
-  isCompleted: boolean;
-};
+import { TodoType } from '@/types/TodoType';
 
 type Props = {
   todos: TodoType[];
@@ -17,7 +14,7 @@ const TodoList = ({ todos, setTodos }: Props) => {
   return (
     <Stack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
       {todos.map((todo, i) => (
-        <Todo key={i} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
+        <Todo key={todo.id} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
       ))}
     </Stack>
   );

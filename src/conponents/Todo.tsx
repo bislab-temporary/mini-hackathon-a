@@ -2,10 +2,7 @@ import { CloseIcon } from '@chakra-ui/icons';
 import { Flex, Spacer, Editable, EditablePreview, EditableInput, Checkbox } from '@chakra-ui/react';
 import React, { Dispatch, SetStateAction } from 'react';
 
-type TodoType = {
-  title: string;
-  isCompleted: boolean;
-};
+import { TodoType } from '@/types/TodoType';
 
 type Props = {
   index: number;
@@ -18,14 +15,12 @@ const Todo = ({ index, title, todos, setTodos }: Props) => {
   const removeTodo = () => {
     const newTodos = todos.filter((_, i) => i !== index);
     setTodos(newTodos);
-    console.log(index);
   };
 
   const handleStatus = () => {
-    const newStatus = todos;
+    const newStatus = [...todos];
     newStatus[index].isCompleted = !newStatus[index].isCompleted;
     setTodos(newStatus);
-    console.log(index);
   };
 
   return (
