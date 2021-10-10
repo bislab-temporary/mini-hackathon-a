@@ -17,7 +17,7 @@ const TodoList = ({ todos, setTodos }: Props) => {
   return (
     <Stack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
       {todos.map((todo, i) => (
-        <Todo key={todo.title} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
+        <Todo key={i} index={i} title={todo.title} todos={todos} setTodos={setTodos} />
       ))}
     </Stack>
   );
