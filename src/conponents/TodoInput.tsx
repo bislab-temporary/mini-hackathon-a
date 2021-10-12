@@ -8,6 +8,8 @@ type Props = {
   setTodos: Dispatch<SetStateAction<TodoType[]>>;
 };
 
+let num = 3;
+
 const TodoInput = ({ todos, setTodos }: Props) => {
   const [title, setTitle] = useState<string>('');
 
@@ -20,11 +22,9 @@ const TodoInput = ({ todos, setTodos }: Props) => {
       onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
       onKeyPress={(e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-          const newTodos = [
-            ...todos,
-            { id: String(todos.length), title: title, isCompleted: false },
-          ];
+          const newTodos = [...todos, { id: String(num), title: title, isCompleted: false }];
           setTodos(newTodos);
+          num++;
         }
       }}
     />
