@@ -1,27 +1,23 @@
 import { Container } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
-import TodoInput from './conponents/TodoInput';
-import TodoList from './conponents/TodoList';
-
-type TodoType = {
-  title: string;
-};
+import TodoInput from '@/conponents/TodoInput';
+import TodoList from '@/conponents/TodoList';
+import { TodoType } from '@/types/TodoType';
 
 const initialTodos: TodoType[] = [
-  { title: '資料を作る' },
-  { title: '歯医者に行く' },
-  { title: '課題をやる' },
+  { id: '0', title: '資料を作る', isCompleted: false },
+  { id: '1', title: '歯医者に行く', isCompleted: false },
+  { id: '2', title: '課題をやる', isCompleted: false },
 ];
 
 const App = () => {
   const [todos, setTodos] = useState<TodoType[]>(initialTodos);
-  const [status, setStatus] = useState<boolean[]>([false, false, false]);
 
   return (
     <Container>
-      <TodoInput todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
-      <TodoList todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
+      <TodoInput todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </Container>
   );
 };
